@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class Produit {
    private String description;
    @ManyToOne
    private Category category;
-   @ManyToMany
+   @ManyToMany(fetch=FetchType.EAGER)
    private Collection<Image> image=new ArrayList<>();
    
 }

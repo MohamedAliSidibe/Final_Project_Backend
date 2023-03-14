@@ -20,7 +20,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String category_name;
+	private String name;
 	@OneToMany(mappedBy = "category")
 	private Collection<Produit> produit;
 }
