@@ -10,6 +10,6 @@ public interface ProductService {
 	 Image addimage(Image image);
 	 void addCategory();
 	 List<Produit> Allproduit();
-	 void addImgToproduct(String ref,String images);
+	 void addImgToproduct(int ref,String images);
 
 }

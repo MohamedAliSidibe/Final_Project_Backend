@@ -35,7 +35,7 @@ public class ProductRestController {
 	
 	@PostMapping(path="/imagetoproduit")
 	public void Image_ToProduit(@RequestBody ImageToProduit imagetoProduit){
-		String ref=imagetoProduit.getRef();
+		int ref=imagetoProduit.getRef();
 		String img_name=imagetoProduit.getName_image();
 		productservice.addImgToproduct(ref, img_name);	
 	}
@@ -43,7 +43,7 @@ public class ProductRestController {
 }
 @Data
 class ImageToProduit{
-	private String ref;
+	private int ref;
 	private String name_image;
 }
 
