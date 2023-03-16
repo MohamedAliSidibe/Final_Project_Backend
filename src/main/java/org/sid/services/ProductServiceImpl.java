@@ -1,5 +1,6 @@
 package org.sid.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -32,7 +33,15 @@ public class ProductServiceImpl  implements ProductService{
 	@Override
 	public List<Produit> Allproduit() {
 		// TODO Auto-generated method stub
-		return produitrep.findAll();
+		List<Produit> L=new ArrayList<>();
+		 produitrep.findAll().forEach(p->{
+		  String l=  String.valueOf(p.getRef()); 
+		  p.setId("p"+l);
+		  p.setName("Product"+l);
+		  L.add(p);
+		  System.out.println(p.getId());
+		});;
+		return L;
 	}
 	@Override
 	public Image addimage(Image image) {
@@ -40,11 +49,11 @@ public class ProductServiceImpl  implements ProductService{
 		return imgrep.save(image);
 	}
 	@Override
-	public void addImgToproduct(String ref, String images) {
+	public void addImgToproduct(int ref, String images) {
 		// TODO Auto-generated method stub
 		Produit p=produitrep.findByRef(ref);
 		Image i=imgrep.findByImageName(images);
-		p.getImage().add(i);
+		p.getImages().add(i);
 		System.out.println("me");
 	}
 	@Override
@@ -53,10 +62,15 @@ public class ProductServiceImpl  implements ProductService{
 		Stream.of("Pantalons","Robes","Casquettes","Manteaux",
 				"Lunettes","Sacs","Talons","TShirts","Chaussettes").forEach(cat->{
 			Category categorie=new Category();
-			categorie.setName(cat);
+			categorie.setNameCat(cat);
 			catrep.save(categorie);
 		});
 		
+	}
+	@Override
+	public List<Image> Allimage() {
+		// TODO Auto-generated method stub
+		return imgrep.findAll();
 	}
 	
 

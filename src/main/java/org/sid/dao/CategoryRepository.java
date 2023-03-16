@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("*")
 @RepositoryRestResource
 public interface CategoryRepository  extends JpaRepository<Category,Long>{
-	Category findByName(String name);
+	Category findByNameCat(String name);
 }
