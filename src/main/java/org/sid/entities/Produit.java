@@ -31,26 +31,29 @@ public class Produit {
    @JsonIgnore
    private int ref;
    private String id;
-   private String nom;
-   private double prix;
+
+   private String name;
+   private double price;
+
    private String description;
    @JsonProperty(access = Access.WRITE_ONLY)
    @ManyToOne
    private Category category;
    private String categoryname;
    @ManyToMany(fetch=FetchType.EAGER)
-   private List<Image> image=new ArrayList<>();
-public Produit(String id, String nom, double prix, String description, String categoryname,
-		List<Image> image) {
+
+   private Collection<Image> images=new ArrayList<>();
+public Produit(String id, String name, double price, String description, Category category, String categoryname,
+		Collection<Image> images) {
 	super();
 	this.id = id;
-	this.nom = nom;
-	this.prix = prix;
+	this.name = name;
+	this.price = price;
 	this.description = description;
 	this.category = category;
 	this.categoryname = categoryname;
-	this.image = image;
+	this.images = images;
 }
-  
+
    
 }

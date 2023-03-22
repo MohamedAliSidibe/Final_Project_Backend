@@ -37,11 +37,11 @@ public class ProductServiceImpl  implements ProductService{
 		 produitrep.findAll().forEach(p->{
 		  String l=  String.valueOf(p.getRef()); 
 		  p.setId("p"+l);
-		  p.setNom("Product"+l);
+
+		  p.setName("Product"+l);
 		  L.add(p);
 		  System.out.println(p.getId());
-		  System.out.println(p.getRef());
-			
+
 		});;
 		return L;
 	}
@@ -55,7 +55,7 @@ public class ProductServiceImpl  implements ProductService{
 		// TODO Auto-generated method stub
 		Produit p=produitrep.findByRef(ref);
 		Image i=imgrep.findByImageName(images);
-		p.getImage().add(i);
+		p.getImages().add(i);
 		System.out.println("me");
 	}
 	@Override
@@ -64,10 +64,15 @@ public class ProductServiceImpl  implements ProductService{
 		Stream.of("Pantalons","Robes","Casquettes","Manteaux",
 				"Lunettes","Sacs","Talons","TShirts","Chaussettes").forEach(cat->{
 			Category categorie=new Category();
-			categorie.setName(cat);
+			categorie.setNameCat(cat);
 			catrep.save(categorie);
 		});
 		
+	}
+	@Override
+	public List<Image> Allimage() {
+		// TODO Auto-generated method stub
+		return imgrep.findAll();
 	}
 	
 

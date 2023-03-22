@@ -1,3 +1,4 @@
+
 package org.sid.web;
 
 import java.util.List;
@@ -28,6 +29,10 @@ public class ProductRestController {
 	public Produit addproduct(@RequestBody Produit produit) {
 		return productservice.addproduct(produit);
 	}
+	@GetMapping(path="/image")
+	public List<Image> listimage(){
+		return productservice.Allimage() ;
+	}
 	@PostMapping(path="/image")
 	public Image saveImage(@RequestBody Image image){
 		return productservice.addimage(image);
@@ -36,7 +41,7 @@ public class ProductRestController {
 	@PostMapping(path="/imagetoproduit")
 	public void Image_ToProduit(@RequestBody ImageToProduit imagetoProduit){
 		int ref=imagetoProduit.getRef();
-		String img_name=imagetoProduit.getName_image();
+		String img_name=imagetoProduit.getImageName();
 		productservice.addImgToproduct(ref, img_name);	
 	}
 	
@@ -44,7 +49,6 @@ public class ProductRestController {
 @Data
 class ImageToProduit{
 	private int ref;
-	private String name_image;
+	private String imageName;
 }
-
 
