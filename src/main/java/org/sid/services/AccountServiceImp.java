@@ -2,37 +2,42 @@ package org.sid.services;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.sid.dao.AppRoleRepository;
 import org.sid.dao.AppUserRepository;
 import org.sid.entities.AppRole;
 import org.sid.entities.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
 @Transactional
-public class AccountServiceImpl implements AccountService {
-
+public class AccountServiceImp implements AccountService {
 	@Autowired
 	private AppRoleRepository appRoleRepo;
 	@Autowired
 	private AppUserRepository appUserRepo;
-	//@Autowired
-	//private PasswordEncoder passwordEncoder;
+	@Autowired
+	private  PasswordEncoder passwordEncoder;
+	
+	
 
 	@Override
+	
 	public AppUser addNewUser(AppUser appUser) {
 		// TODO Auto-generated method stub
-		//String pw=appUser.getPassword();
-	//	appUser.setPassword(passwordEncoder.encode(pw));
-		return appUserRepo.save(appUser);
+		String pw=appUser.getPassword();
+		
+		appUser.setPassword(passwordEncoder.encode(pw));
+		appUserRepo.save(appUser);
+		
+		addRoleToUser(appUser.getName(),"USER");
+		
+		return null;
 		
 	}
 

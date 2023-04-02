@@ -1,7 +1,6 @@
 package org.sid.entities;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+
+
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class Category {
@@ -23,4 +24,5 @@ public class Category {
 	private String nameCat;
 	@OneToMany(mappedBy = "category")
 	private Collection<Produit> produit;
+
 }

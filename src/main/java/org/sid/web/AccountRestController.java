@@ -7,6 +7,7 @@ import org.sid.entities.AppRole;
 import org.sid.entities.AppUser;
 import org.sid.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,11 +27,17 @@ public class AccountRestController {
 		return accountService.listUsers();
 	}
 	
+	
+	
 	@PostMapping(path="/users")
 	public AppUser saveUser(@RequestBody AppUser appUser ) {
+		System.out.println("gggggggggggg");
+		
 		return accountService.addNewUser(appUser);
 		
 	}
+	
+	
 	
 	@PostMapping(path="/roles")
 	public AppRole saveRole(@RequestBody AppRole appRole ) {
