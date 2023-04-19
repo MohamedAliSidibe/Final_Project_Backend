@@ -60,9 +60,39 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 			  else if(request.getRequestURI().equals("/produit")) {
 			  System.out.println("ddddddddddddddddd"); filterChain.doFilter(request,
 			  response); return; }
+		  
+			  else if(request.getRequestURI().equals("/produit/{category}")) {
+				  System.out.println("ddddddddddddddddd"); filterChain.doFilter(request,
+				  response); return; }
 	      
+			  else if(request.getRequestURI().equals("/category")) {
+				  System.out.println("ddddddddddddddddd"); filterChain.doFilter(request,
+				  response); return; }
 		  
-		  
+			  else if (request.getRequestURI().matches("^/produit/(.*)$")) {
+				    String category = request.getRequestURI().replaceAll("^/produit/", "");
+				    System.out.println("Category : " + category);
+				    filterChain.doFilter(request, response);
+				    return;
+				}
+			  else if (request.getRequestURI().matches("^/delete/(.*)$")) {
+				    String delete = request.getRequestURI().replaceAll("^/delete/", "");
+				    System.out.println("delete : " +delete);
+				    filterChain.doFilter(request, response);
+				    return;
+				}
+			  else if (request.getRequestURI().matches("^/view_product/(.*)$")) {
+				    String view = request.getRequestURI().replaceAll("^/view_product/", "");
+				    System.out.println("view : " +view);
+				    filterChain.doFilter(request, response);
+				    return;
+				}
+			  else if (request.getRequestURI().matches("^/edit_product/(.*)$")) {
+				    String edit = request.getRequestURI().replaceAll("^/edit_product/", "");
+				    System.out.println("edit : " +edit);
+				    filterChain.doFilter(request, response);
+				    return;
+				}
 	        else {
 		 
 		String authorizationToken=request.getHeader("Authorization");

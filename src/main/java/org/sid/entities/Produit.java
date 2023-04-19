@@ -29,6 +29,7 @@ public class Produit {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @JsonIgnore
+   @JsonProperty(access = Access.WRITE_ONLY)
    private int ref;
    private String id;
 
@@ -54,6 +55,5 @@ public Produit(String id, String name, double price, String description, Categor
 	this.categoryname = categoryname;
 	this.images = images;
 }
-
    
 }

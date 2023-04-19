@@ -144,7 +144,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		  
 			    http.csrf().disable()
 		        .authorizeRequests()
-		            .antMatchers("/produit/**","/users/**").permitAll()
+		            .antMatchers("/produit/**","/users/**","/category/**","/delete/{id}**","/view_product/{id}**","/edit_product/{ref}**").permitAll()
 		            .anyRequest().authenticated()
 		        .and()
 		        .addFilter(new JwtAuthenticationFilter(authenticationManagerBean()))

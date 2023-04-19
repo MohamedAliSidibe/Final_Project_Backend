@@ -194,9 +194,6 @@ public class ProjetJeeApplication {
 				L.add("Sacs Classique 2");
 				
 				
-				
-				
-				
 				for(int i=1;i<=8;i++) {
 					 productservice.addimage(new Image(null,"Sacs/SA"+i+".jpg"));
 					 productservice.addimage(new Image(null,"Sacs/SA"+i+i+".jpg"));
